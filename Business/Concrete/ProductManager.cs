@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -37,6 +38,18 @@ namespace Business.Concrete
         public List<ProductDetailDto> GetProductDetails()
         {
             return _productDal.GetProductDetails();
+        }
+
+        public IResult Add(Product product)
+        {
+            _productDal.Add(product);
+
+            return new Result(true,"Ürün eklendi.");
+        }
+
+        public Product GetById(int productId)
+        {
+            return _productDal.Get(p => p.ProductId == productId);
         }
     }
 }

@@ -20,7 +20,6 @@ namespace ConsoleUI
                 i++;
             }
 
-
             Console.ReadLine();
         }
 
