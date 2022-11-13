@@ -20,7 +20,7 @@ namespace ConsoleUI
                 int i = 1;
                 foreach (var product in result.Data)
                 {
-                    Console.WriteLine(i + ". " + product.ProductName + " - " + product.CategoryName + " - " +product.UnitPrice.ToString());
+                    Console.WriteLine(i + ". " + product.ProductName + " - " + product.CategoryName + " - " +product.UnitPrice);
                     i++;
                 }
             }
