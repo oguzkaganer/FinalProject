@@ -13,12 +13,22 @@ namespace ConsoleUI
 
             ProductManager productManager = new ProductManager(new EfProductDal());
 
-            int i = 1;
-            foreach (var product in productManager.GetProductDetails())
+            var result = productManager.GetProductDetails();
+
+            if (result.Success)
             {
-                Console.WriteLine(i + ". " + product.ProductName + " - " + product.CategoryName);
-                i++;
+                int i = 1;
+                foreach (var product in result.Data)
+                {
+                    Console.WriteLine(i + ". " + product.ProductName + " - " + product.CategoryName + " - " +product.UnitPrice.ToString());
+                    i++;
+                }
             }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+
 
             Console.ReadLine();
         }
@@ -38,7 +48,7 @@ namespace ConsoleUI
             ProductManager productManager = new ProductManager(new EfProductDal());
 
             int i = 1;
-            foreach (var product in productManager.GetAll())
+            foreach (var product in productManager.GetAll().Data)
             {
                 Console.WriteLine(i + ". " + product.ProductName);
                 i++;
@@ -47,7 +57,7 @@ namespace ConsoleUI
             Console.WriteLine("-----------------------------------------");
 
             i = 1;
-            foreach (var product in productManager.GetByUnitPrice(10, 20))
+            foreach (var product in productManager.GetByUnitPrice(10, 20).Data)
             {
                 Console.WriteLine(i + ". " + product.ProductName);
                 i++;
@@ -56,7 +66,7 @@ namespace ConsoleUI
             Console.WriteLine("-----------------------------------------");
 
             i = 1;
-            foreach (var product in productManager.GetAllByCategoryId(1))
+            foreach (var product in productManager.GetAllByCategoryId(1).Data)
             {
                 Console.WriteLine(i + ". " + product.ProductName);
                 i++;

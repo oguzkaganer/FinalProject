@@ -26,7 +26,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  ProductId = p.ProductId,
                                  ProductName = p.ProductName,
                                  CategoryName = c.CategoryName,
-                                 UnitsInStock = p.UnitsInStock
+                                 UnitsInStock = p.UnitsInStock,
+                                 UnitPrice = p.UnitPrice
                              };
 
                 var result2 = context.Products.Join(context.Categories, p => p.CategoryId, c => c.CategoryId, (p, c) => new ProductDetailDto
@@ -34,7 +35,8 @@ namespace DataAccess.Concrete.EntityFramework
                     ProductId = p.ProductId,
                     ProductName = p.ProductName,
                     CategoryName = c.CategoryName,
-                    UnitsInStock = p.UnitsInStock
+                    UnitsInStock = p.UnitsInStock,
+                    UnitPrice = p.UnitPrice
 
                 });
 
